@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AR Traders</title>
+  <link rel="stylesheet" href="src/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+</head>
+<body>
+<div class="app" id="app">
+  <nav class="nav">
+    <div class="nav-logo"><i class="ti ti-building-store"></i> AR Traders</div>
+    <div style="display:flex;gap:6px;align-items:center">
+      <div class="nav-tabs">
+        <button class="nav-tab active" id="nav-home" onclick="showPage('home')">Home</button>
+        <button class="nav-tab" id="nav-store" onclick="showPage('store')">Store</button>
+        <button class="nav-tab" id="nav-myorders" onclick="showPage('myorders')" style="position:relative">My Orders <span id="my-orders-badge" style="display:none;position:absolute;top:-4px;right:-4px;background:#1B6B5A;color:#fff;font-size:10px;font-weight:700;width:18px;height:18px;border-radius:50%;align-items:center;justify-content:center;"></span></button>
+        <button class="nav-tab" onclick="showPage('admin-gate')" style="position:relative">Admin <span id="admin-order-badge" style="display:none;position:absolute;top:-4px;right:-4px;background:#ef4444;color:#fff;font-size:10px;font-weight:700;width:18px;height:18px;border-radius:50%;align-items:center;justify-content:center;"></span></button>
+      </div>
+      <button class="nav-cart" onclick="showPage('cart')">
+        <i class="ti ti-shopping-cart"></i> Cart <span id="cart-count">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HOME PAGE -->
+  <div class="page active" id="page-home">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-bg-shapes">
+        <div class="shape s1"></div>
+        <div class="shape s2"></div>
+        <div class="shape s3"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="dot"></span> Trusted Disposable Shop
+        </div>
+        <h1 class="hero-heading">
+          Quality You Can<br>
+          <span class="hero-highlight">Count On</span>
+        </h1>
+        <p class="hero-para">Premium disposable cups, plates, containers &amp; more — delivered fresh to your door at unbeatable prices.</p>
+        <div class="hero-actions">
+          <button class="btn-hero-primary" onclick="showPage('store')">
+            Shop Now <i class="ti ti-arrow-right"></i>
+          </button>
+          <button class="btn-hero-ghost" onclick="document.getElementById('cats-section').scrollIntoView({behavior:'smooth'})">
+            Browse Categories
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-num">500+</span><span class="stat-label">Products</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><span class="stat-num">Fast</span><span class="stat-label">Delivery</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Food-Safe</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-card vc1"><i class="ti ti-cup"></i></div>
+        <div class="visual-card vc2"><i class="ti ti-salad"></i></div>
+        <div class="visual-card vc3"><i class="ti ti-box"></i></div>
+        <div class="visual-card vc4"><i class="ti ti-tools-kitchen-2"></i></div>
+        <div class="visual-ring"></div>
+      </div>
+    </div>
+
+    <!-- WHY US STRIP -->
+    <div class="why-strip">
+      <div class="why-item">
+        <i class="ti ti-truck-delivery"></i>
+        <div>
+          <strong>Fast Delivery</strong>
+          <span>Right to your door</span>
+        </div>
+      </div>
+      <div class="why-sep"></div>
+      <div class="why-item">
+        <i class="ti ti-shield-check"></i>
+        <div>
+          <strong>Food-Grade Certified</strong>
+          <span>Safe &amp; tested materials</span>
+        </div>
+      </div>
+      <div class="why-sep"></div>
+      <div class="why-item">
+        <i class="ti ti-rosette-discount"></i>
+        <div>
+          <strong>Best Prices</strong>
+          <span>Wholesale &amp; retail</span>
+        </div>
+      </div>
+      <div class="why-sep"></div>
+      <div class="why-item">
+        <i class="ti ti-headset"></i>
+        <div>
+          <strong>Easy Ordering</strong>
+          <span>Call to confirm</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CATEGORIES -->
+    <div class="section" id="cats-section">
+      <div class="section-header">
+        <h2 class="section-title">Shop by Category</h2>
+        <p class="section-sub">Everything you need, all in one place</p>
+      </div>
+      <div class="cat-grid">
+        <div class="cat-tile" onclick="goToCategory('Cups &amp; Glasses')">
+          <div class="cat-icon-wrap" style="background:linear-gradient(135deg,#e0f7ef,#a7ecd4)">
+            <i class="ti ti-cup" style="color:#1B6B5A"></i>
+          </div>
+          <span class="cat-name">Cups &amp; Glasses</span>
+          <i class="ti ti-chevron-right cat-arr"></i>
+        </div>
+        <div class="cat-tile" onclick="goToCategory('Plates &amp; Bowls')">
+          <div class="cat-icon-wrap" style="background:linear-gradient(135deg,#fef3e2,#fdd89a)">
+            <i class="ti ti-salad" style="color:#b97a00"></i>
+          </div>
+          <span class="cat-name">Plates &amp; Bowls</span>
+          <i class="ti ti-chevron-right cat-arr"></i>
+        </div>
+        <div class="cat-tile" onclick="goToCategory('Containers &amp; Boxes')">
+          <div class="cat-icon-wrap" style="background:linear-gradient(135deg,#ede9fe,#c4b5fd)">
+            <i class="ti ti-box" style="color:#6d28d9"></i>
+          </div>
+          <span class="cat-name">Containers &amp; Boxes</span>
+          <i class="ti ti-chevron-right cat-arr"></i>
+        </div>
+        <div class="cat-tile" onclick="goToCategory('Cutlery')">
+          <div class="cat-icon-wrap" style="background:linear-gradient(135deg,#fee2e2,#fca5a5)">
+            <i class="ti ti-tools-kitchen-2" style="color:#b91c1c"></i>
+          </div>
+          <span class="cat-name">Cutlery</span>
+          <i class="ti ti-chevron-right cat-arr"></i>
+        </div>
+        <div class="cat-tile" onclick="goToCategory('Tissue &amp; Napkins')">
+          <div class="cat-icon-wrap" style="background:linear-gradient(135deg,#e0f2fe,#7dd3fc)">
+            <i class="ti ti-toilet-paper" style="color:#0369a1"></i>
+          </div>
+          <span class="cat-name">Tissue &amp; Napkins</span>
+          <i class="ti ti-chevron-right cat-arr"></i>
+        </div>
+        <div class="cat-tile" onclick="goToCategory('Bags &amp; Wraps')">
+          <div class="cat-icon-wrap" style="background:linear-gradient(135deg,#fce7f3,#f9a8d4)">
+            <i class="ti ti-shopping-bag" style="color:#9d174d"></i>
+          </div>
+          <span class="cat-name">Bags &amp; Wraps</span>
+          <i class="ti ti-chevron-right cat-arr"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA BANNER -->
+    <div class="cta-banner">
+      <div class="cta-banner-left">
+        <h3>Ready to Order?</h3>
+        <p>Browse our full collection of premium disposable products</p>
+      </div>
+      <button class="btn-cta-banner" onclick="showPage('store')">
+        View All Products <i class="ti ti-arrow-right"></i>
+      </button>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="home-footer">
+      <div class="footer-logo"><i class="ti ti-building-store"></i> AR Traders</div>
+      <p>Your trusted partner for quality disposable products</p>
+    </footer>
+  </div>
+
+  <!-- REVIEW PAGE -->
+  <div class="page" id="page-review">
+    <div class="review-wrap">
+      <div class="review-header">
+        <button class="review-back" onclick="showPage('store')"><i class="ti ti-arrow-left"></i> Continue Shopping</button>
+        <h2 class="review-title"><i class="ti ti-clipboard-check"></i> Check Your Items</h2>
+        <p class="review-subtitle">Review before placing your order</p>
+      </div>
+      <div id="review-items"></div>
+      <div class="review-footer">
+        <div class="review-total-row">
+          <span>Total Amount</span>
+          <span id="review-total" class="review-total-val">₹0</span>
+        </div>
+        <button class="btn-checkout" onclick="goToCheckout()">
+          Confirm &amp; Proceed to Order <i class="ti ti-arrow-right"></i>
+        </button>
+        <button class="btn-back-store" onclick="showPage('store')">
+          <i class="ti ti-plus"></i> Add More Items
+        </button>
+      </div>
+    </div>
+  </div>
+
+    <!-- STORE PAGE -->
+  <div class="page" id="page-store">
+    <div id="new-arrivals-section"></div>
+    <div class="cats" id="cats"></div>
+    <div class="store-grid" id="store-grid"></div>
+    <div class="empty" id="store-empty" style="display:none">
+      <i class="ti ti-package-off" style="font-size:32px;color:#9FE1CB"></i>
+      <p style="margin-top:10px">No products yet.<br>Ask admin to add products.</p>
+    </div>
+  </div>
+
+  <!-- CART PAGE -->
+  <div class="page" id="page-cart">
+    <div class="cart-page">
+      <div id="cart-items"></div>
+      <div class="checkout-form" id="checkout-form" style="display:none">
+        <h3>Your Details</h3>
+        <input type="text" id="cust-name" placeholder="Your name">
+        <input type="tel" id="cust-phone" placeholder="Mobile number">
+        <input type="text" id="cust-address" placeholder="Delivery address">
+        <div class="cart-total"><span>Total</span><span id="cart-total-val">₹0</span></div>
+        <button class="btn-order" onclick="placeOrder()">Place Order</button>
+        <div id="order-success" style="display:none" class="success-msg">
+          <i class="ti ti-circle-check" style="font-size:24px"></i><br>
+          Order placed! The owner will call you shortly.
+        </div>
+      </div>
+      <div class="empty" id="cart-empty">
+        <i class="ti ti-shopping-cart-off" style="font-size:32px;color:#9FE1CB"></i>
+        <p style="margin-top:10px">Your cart is empty. Add items from the store!</p>
+        <button class="btn-save" style="margin-top:14px" onclick="showPage('store')">Browse Store</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORDER CONFIRMED PAGE -->
+  <div class="page" id="page-confirmed">
+    <div class="confirmed-wrap">
+      <div class="confirmed-anim">
+        <div class="confirmed-circle">
+          <i class="ti ti-circle-check"></i>
+        </div>
+      </div>
+      <h2 class="confirmed-title">Order Confirmed! 🎉</h2>
+      <p class="confirmed-msg">Your order has been placed successfully.<br>Please wait — the owner will call you shortly to confirm.</p>
+      <div id="confirmed-body"></div>
+      <div class="confirmed-thankyou">
+        <i class="ti ti-heart" style="color:#ef4444"></i>
+        Thank you for shopping with <strong>AR Traders</strong>!
+      </div>
+      <button class="btn-confirmed-home" onclick="showPage('home')">
+        <i class="ti ti-home"></i> Back to Home
+      </button>
+    </div>
+  </div>
+
+  <!-- MY ORDERS PAGE -->
+  <div class="page" id="page-myorders">
+    <div class="myorders-wrap">
+      <div class="myorders-header">
+        <h2 class="myorders-title"><i class="ti ti-receipt"></i> My Orders</h2>
+        <p class="myorders-sub">Your order history</p>
+      </div>
+      <div id="myorders-list"></div>
+      <div class="empty" id="myorders-empty" style="display:none">
+        <i class="ti ti-receipt-off" style="font-size:32px;color:#9FE1CB"></i>
+        <p style="margin-top:10px">You haven't placed any orders yet.<br>Start shopping to see orders here!</p>
+        <button class="btn-save" style="margin-top:14px" onclick="showPage('store')">Browse Store</button>
+      </div>
+    </div>
+  </div>
+
+    <!-- ADMIN LOGIN -->
+  <div class="page" id="page-admin-gate">
+    <div class="login-wrap">
+      <h2><i class="ti ti-lock"></i> Admin Login</h2>
+      <p>For shop owners only</p>
+      <div class="field"><label>Username</label><input type="text" id="login-user" placeholder="Username"></div>
+      <div class="field"><label>Password</label><input type="password" id="login-pass" placeholder="••••••"></div>
+      <button class="btn-primary" onclick="doLogin()">Login</button>
+      <div class="err" id="login-err" style="display:none">Wrong username or password</div>
+    </div>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div class="page" id="page-admin">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <h2 style="color:#1B6B5A;font-size:18px;font-weight:500">Admin Panel</h2>
+      <button onclick="doLogout()" class="btn-logout">Logout</button>
+    </div>
+    <div class="admin-tabs">
+      <button class="atab active" onclick="switchATab('add',this)">Add Product</button>
+      <button class="atab" onclick="switchATab('manage',this)">Manage Products</button>
+      <button class="atab" onclick="switchATab('orders',this)">Orders</button>
+      <button class="atab" onclick="switchATab('settings',this)">⚙ Settings</button>
+    </div>
+    <div class="asection active" id="asec-add">
+      <div class="form-card">
+        <h3>Add New Product</h3>
+        <div class="upload-box" id="upload-box">
+          <input type="file" accept="image/*" id="img-input" onchange="handleImg(this)">
+          <img id="img-preview" style="display:none;max-height:100px;border-radius:8px;object-fit:cover;margin-bottom:8px">
+          <p id="upload-hint"><i class="ti ti-photo-up" style="font-size:24px;color:#1B6B5A"></i><br>Click or drag a photo here</p>
+        </div>
+        <input type="text" id="p-name" placeholder="Product name">
+        <div class="row2">
+          <input type="text" id="p-price" placeholder="Price (e.g. ₹80)">
+          <input type="text" id="p-unit" placeholder="Unit (e.g. per pack of 50)">
+        </div>
+        <select id="p-cat">
+          <option value="">Select category</option>
+          <option>Cups & Glasses</option>
+          <option>Plates & Bowls</option>
+          <option>Containers & Boxes</option>
+          <option>Cutlery</option>
+          <option>Tissue & Napkins</option>
+          <option>Bags & Wraps</option>
+          <option>Other</option>
+        </select>
+        <textarea id="p-desc" placeholder="Product details (features, material, uses...)"></textarea>
+        <input type="text" id="p-tags" placeholder="Tags (e.g. Food-grade, Leak-proof, Eco-friendly)">
+        <button class="btn-save" onclick="addProduct()"><i class="ti ti-plus"></i> Save Product</button>
+        <div id="add-msg" style="display:none;margin-top:10px;color:#065f46;font-size:13px;background:#d1fae5;padding:8px 12px;border-radius:8px">✓ Product added successfully!</div>
+      </div>
+    </div>
+    <div class="asection" id="asec-manage">
+      <div class="pgrid" id="admin-pgrid"></div>
+      <div class="empty" id="admin-empty">No products yet. Add one first.</div>
+    </div>
+    <div class="asection" id="asec-orders">
+      <div id="orders-list"></div>
+      <div class="empty" id="orders-empty">No orders received yet.</div>
+    </div>
+
+    <!-- SETTINGS TAB -->
+    <div class="asection" id="asec-settings">
+      <div class="form-card">
+        <h3>Change Admin Credentials</h3>
+        <p style="font-size:13px;color:#6b7280;margin-bottom:16px">Update your admin username and/or password below.</p>
+
+        <label style="font-size:13px;color:#374151;font-weight:500">Current Password <span style="color:red">*</span></label>
+        <input type="password" id="s-current-pass" placeholder="Enter current password" style="margin-bottom:12px">
+        <div id="s-current-err" style="display:none;color:#dc2626;font-size:12px;margin-top:-8px;margin-bottom:10px">❌ Current password is incorrect.</div>
+
+        <label style="font-size:13px;color:#374151;font-weight:500">New Username</label>
+        <input type="text" id="s-new-user" placeholder="Leave blank to keep current username" style="margin-bottom:12px">
+
+        <label style="font-size:13px;color:#374151;font-weight:500">New Password</label>
+        <input type="password" id="s-new-pass" placeholder="Leave blank to keep current password" style="margin-bottom:12px">
+
+        <label style="font-size:13px;color:#374151;font-weight:500">Confirm New Password</label>
+        <input type="password" id="s-confirm-pass" placeholder="Re-enter new password" style="margin-bottom:16px">
+        <div id="s-match-err" style="display:none;color:#dc2626;font-size:12px;margin-top:-12px;margin-bottom:10px">❌ New passwords do not match.</div>
+
+        <button class="btn-save" onclick="saveAdminCredentials()"><i class="ti ti-device-floppy"></i> Save Changes</button>
+        <div id="s-success" style="display:none;margin-top:12px;color:#065f46;font-size:13px;background:#d1fae5;padding:8px 12px;border-radius:8px">✓ Credentials updated successfully! Please log in again.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="src/app.js"></script>
+<script>
+function goToCategory(cat) {
+  showPage('store');
+  setTimeout(function() {
+    var btns = document.querySelectorAll('.cat-btn');
+    btns.forEach(function(b) {
+      if (b.textContent.trim() === cat) b.click();
+    });
+  }, 100);
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.page').forEach(function(x){ x.classList.remove('active'); });
+  document.getElementById('page-home').classList.add('active');
+  document.querySelectorAll('.nav-tab').forEach(function(x){ x.classList.remove('active'); });
+  document.getElementById('nav-home').classList.add('active');
+});
+</script>
+</body>
+</html>
